@@ -126,3 +126,8 @@ dev/
 .kiro/steering/byterover-rules.md
 .qoder/rules/byterover-rules.md
 .augment/rules/byterover-rules.md
+
+# Docker export archives (too large for git)
+lovemyfluffy-export/
+*.tar.gz
+*.tar
