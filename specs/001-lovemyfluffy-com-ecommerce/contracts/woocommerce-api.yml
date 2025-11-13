@@ -1,0 +1,486 @@
+openapi: 3.0.0
+info:
+  title: LoveMyFluffy WooCommerce API
+  description: E-commerce API for pet supplies using WooCommerce REST API
+  version: 1.0.0
+  contact:
+    name: LoveMyFluffy API Support
+    url: https://lovemyfluffy.com/api-support
+
+servers:
+  - url: http://localhost:8660/wp-json/wc/v3
+    description: Local development server
+
+security:
+  - woocommerce_auth: []
+
+components:
+  securitySchemes:
+    woocommerce_auth:
+      type: http
+      scheme: basic
+      description: WooCommerce API key authentication
+
+  schemas:
+    Product:
+      type: object
+      required:
+        - name
+        - type
+        - regular_price
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        slug:
+          type: string
+          readOnly: true
+        description:
+          type: string
+        short_description:
+          type: string
+        sku:
+          type: string
+          maxLength: 100
+        price:
+          type: string
+          readOnly: true
+        regular_price:
+          type: string
+        sale_price:
+          type: string
+        stock_quantity:
+          type: integer
+          minimum: 0
+        stock_status:
+          type: string
+          enum: [instock, outofstock, onbackorder]
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductCategory'
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductImage'
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductAttribute'
+
+    ProductCategory:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        slug:
+          type: string
+
+    ProductImage:
+      type: object
+      properties:
+        id:
+          type: integer
+        src:
+          type: string
+          format: uri
+        name:
+          type: string
+        alt:
+          type: string
+
+    ProductAttribute:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        options:
+          type: array
+          items:
+            type: string
+
+    Customer:
+      type: object
+      required:
+        - email
+        - first_name
+        - last_name
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        email:
+          type: string
+          format: email
+        first_name:
+          type: string
+        last_name:
+          type: string
+        username:
+          type: string
+        billing:
+          $ref: '#/components/schemas/Address'
+        shipping:
+          $ref: '#/components/schemas/Address'
+        date_created:
+          type: string
+          format: date-time
+          readOnly: true
+
+    Address:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        company:
+          type: string
+        address_1:
+          type: string
+        address_2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        postcode:
+          type: string
+        country:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+
+    Order:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        number:
+          type: string
+          readOnly: true
+        status:
+          type: string
+          enum: [pending, processing, on-hold, completed, cancelled, refunded, failed]
+        total:
+          type: string
+          readOnly: true
+        customer_id:
+          type: integer
+        billing:
+          $ref: '#/components/schemas/Address'
+        shipping:
+          $ref: '#/components/schemas/Address'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderLineItem'
+        payment_method:
+          type: string
+        payment_method_title:
+          type: string
+        date_created:
+          type: string
+          format: date-time
+          readOnly: true
+
+    OrderLineItem:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        product_id:
+          type: integer
+        name:
+          type: string
+        quantity:
+          type: integer
+          minimum: 1
+        price:
+          type: string
+          readOnly: true
+        total:
+          type: string
+          readOnly: true
+
+    Category:
+      type: object
+      required:
+        - name
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+        slug:
+          type: string
+        parent:
+          type: integer
+        description:
+          type: string
+        display:
+          type: string
+          enum: [default, products, subcategories, both]
+        image:
+          $ref: '#/components/schemas/CategoryImage'
+        count:
+          type: integer
+          readOnly: true
+
+    CategoryImage:
+      type: object
+      properties:
+        id:
+          type: integer
+        src:
+          type: string
+          format: uri
+        name:
+          type: string
+        alt:
+          type: string
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        data:
+          type: object
+
+paths:
+  /products:
+    get:
+      summary: List all products
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: per_page
+          in: query
+          schema:
+            type: integer
+            default: 10
+            maximum: 100
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+
+    post:
+      summary: Create a new product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '201':
+          description: Product created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /products/{id}:
+    get:
+      summary: Get product by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Product details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          description: Product not found
+
+    put:
+      summary: Update product
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '200':
+          description: Product updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+
+    delete:
+      summary: Delete product
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Product deleted successfully
+
+  /customers:
+    get:
+      summary: List all customers
+      responses:
+        '200':
+          description: List of customers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+
+    post:
+      summary: Create a new customer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '201':
+          description: Customer created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+
+  /orders:
+    get:
+      summary: List all orders
+      parameters:
+        - name: customer
+          in: query
+          schema:
+            type: integer
+        - name: status
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of orders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+
+    post:
+      summary: Create a new order
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+      responses:
+        '201':
+          description: Order created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+
+  /orders/{id}:
+    get:
+      summary: Get order by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Order details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+
+  /products/categories:
+    get:
+      summary: List all product categories
+      responses:
+        '200':
+          description: List of categories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+
+    post:
+      summary: Create a new category
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+      responses:
+        '201':
+          description: Category created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'

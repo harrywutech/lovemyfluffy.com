@@ -1,50 +1,67 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+- Version change: [template] → 1.0.0
+- New project: WordPress containerized deployment with testing
+- Added principles: Docker-First, Documentation-Driven, Testing-Driven, MCP Integration, Progress Tracking
+- Templates requiring updates: ✅ All templates compatible with new principles
+- Follow-up TODOs: None
+-->
+
+# LoveMyFluffy WordPress Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Docker-First Development
+All services MUST be containerized using Docker. The WordPress site, database (MySQL), and PHP services MUST run in separate containers with proper service isolation. Port 8660 MUST be used for web access. Container orchestration via docker-compose is REQUIRED for local development and deployment.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Documentation-Driven Development
+All development decisions MUST be informed by latest official documentation using Context7 MCP tools. WordPress best practices, PHP configurations, and MySQL optimizations MUST reference current official sources. Code implementations MUST follow documented standards and security guidelines.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Testing-Driven Quality Assurance
+Browser testing using Playwright MCP is MANDATORY before deployment. All user workflows (installation, login, content creation, theme customization) MUST be validated through automated browser tests. Testing scenarios MUST cover responsive design and accessibility standards.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. MCP Integration Requirements
+Development workflow MUST utilize Model Context Protocol (MCP) tools:
+- Context7 MCP for documentation lookup and best practices
+- Playwright MCP for browser testing and debugging
+- Progress-recorder subagent for development tracking
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Progress Tracking Discipline
+All development progress MUST be recorded using the progress-recorder subagent. Key milestones, decisions, issues, and solutions MUST be documented in progress.md. Development workflow MUST be transparent and auditable through progress records.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Technical Standards
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### Container Architecture
+- WordPress container with PHP-FPM
+- MySQL 8.0+ database container with persistent volumes
+- Nginx reverse proxy for web serving
+- Docker networks for service communication
+- Environment-based configuration management
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+### Security Requirements
+- WordPress security best practices implementation
+- Database credential management via Docker secrets
+- Container user privilege restrictions
+- Regular security updates via automated processes
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Development Workflow
+
+### Implementation Process
+1. Research phase using Context7 MCP for latest WordPress documentation
+2. Progress recording via progress-recorder before major development steps
+3. Docker container setup with proper service architecture
+4. WordPress configuration following documented best practices
+5. Browser testing via Playwright MCP for all user scenarios
+6. Documentation updates reflecting implementation decisions
+
+### Quality Gates
+- All containers MUST build successfully
+- WordPress installation MUST complete without errors
+- Browser tests MUST pass all core functionality scenarios
+- Progress documentation MUST be current and complete
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+Constitution compliance is enforced through development workflow. All implementation decisions MUST align with principles. MCP tool usage is mandatory and non-negotiable. Progress tracking ensures accountability and knowledge preservation.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2025-09-28 | **Last Amended**: 2025-09-28

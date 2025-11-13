@@ -1,0 +1,318 @@
+/*
+Theme Name: LoveMyFluffy
+Description: Custom pet supplies e-commerce theme for LoveMyFluffy.com
+Version: 1.0.0
+Author: LoveMyFluffy Team
+Text Domain: lovemyfluffy
+*/
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fafafa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+.site-header {
+    background: linear-gradient(135deg, #ff6b9d, #c44569);
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.site-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.site-description {
+    text-align: center;
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+}
+
+/* Navigation Styles */
+.main-navigation {
+    background: #2c3e50;
+    padding: 0.8rem 0;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.nav-menu a:hover {
+    background: #34495e;
+    color: #ff6b9d;
+}
+
+/* Pet-themed Color Scheme */
+.pet-dogs { background: #ff9f43; }
+.pet-cats { background: #7bed9f; }
+.pet-birds { background: #70a1ff; }
+.pet-fish { background: #5352ed; }
+.pet-small-pets { background: #ff6348; }
+
+/* Product Grid Styles */
+.woocommerce ul.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    list-style: none;
+    padding: 2rem 0;
+}
+
+.woocommerce ul.products li.product {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 1rem;
+}
+
+.woocommerce ul.products li.product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+.woocommerce ul.products li.product .attachment-woocommerce_thumbnail {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.woocommerce ul.products li.product h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.woocommerce ul.products li.product .price {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #ff6b9d;
+    margin-bottom: 1rem;
+}
+
+/* Button Styles */
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button {
+    background: linear-gradient(135deg, #ff6b9d, #c44569);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.woocommerce a.button:hover,
+.woocommerce button.button:hover,
+.woocommerce input.button:hover {
+    background: linear-gradient(135deg, #c44569, #ff6b9d);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Single Product Styles */
+.woocommerce div.product {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin: 2rem 0;
+}
+
+.woocommerce div.product .images {
+    margin-bottom: 2rem;
+}
+
+.woocommerce div.product .summary {
+    padding-left: 2rem;
+}
+
+.woocommerce div.product .entry-title {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.woocommerce div.product .price {
+    font-size: 2rem;
+    color: #ff6b9d;
+    margin-bottom: 1rem;
+}
+
+/* Cart and Checkout Styles */
+.woocommerce-cart table.cart,
+.woocommerce-checkout table.shop_table {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.woocommerce form.checkout {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Footer Styles */
+.site-footer {
+    background: #2c3e50;
+    color: white;
+    padding: 3rem 0 2rem;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.footer-section h3 {
+    color: #ff6b9d;
+    margin-bottom: 1rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    color: #ff6b9d;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #34495e;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-menu {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .woocommerce ul.products {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+
+    .woocommerce div.product .summary {
+        padding-left: 0;
+        margin-top: 1rem;
+    }
+
+    .site-title {
+        font-size: 2rem;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+}
+
+/* Pet Category Badges */
+.pet-category-badge {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.pet-category-badge.dogs { background: #ff9f43; }
+.pet-category-badge.cats { background: #7bed9f; }
+.pet-category-badge.birds { background: #70a1ff; }
+.pet-category-badge.fish { background: #5352ed; }
+.pet-category-badge.small-pets { background: #ff6348; }
+
+/* Loading Animation */
+.loading-paw {
+    display: inline-block;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Accessibility */
+.screen-reader-text {
+    position: absolute !important;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* Focus styles for accessibility */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 2px solid #ff6b9d;
+    outline-offset: 2px;
+}

@@ -1,0 +1,25 @@
+# Yoast SEO Plugin Installation Instructions
+
+To install Yoast SEO plugin:
+
+1. Download from WordPress.org:
+   - URL: https://downloads.wordpress.org/plugin/wordpress-seo.latest-stable.zip
+   - Version: Latest stable (21.x+)
+
+2. Extract to: wordpress/wp-content/plugins/wordpress-seo/
+
+3. Alternative installation via WP-CLI (when container is running):
+   docker-compose exec wordpress wp plugin install wordpress-seo --activate
+
+4. Manual installation:
+   - Download zip file
+   - Extract to plugins directory
+   - Ensure proper file permissions (755 for directories, 644 for files)
+
+Configuration Notes:
+- Set up for e-commerce site optimization
+- Enable Schema.org markup for products
+- Configure XML sitemaps
+- Set up social media integration
+
+Note: Plugin will be automatically downloaded and activated during WordPress installation process.

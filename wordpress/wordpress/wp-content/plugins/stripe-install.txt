@@ -1,0 +1,30 @@
+# Stripe for WooCommerce Plugin Installation Instructions
+
+To install Stripe for WooCommerce plugin:
+
+1. Download from WordPress.org:
+   - URL: https://downloads.wordpress.org/plugin/woocommerce-gateway-stripe.latest-stable.zip
+   - Version: Latest stable (7.x+)
+
+2. Extract to: wordpress/wp-content/plugins/woocommerce-gateway-stripe/
+
+3. Alternative installation via WP-CLI (when container is running):
+   docker-compose exec wordpress wp plugin install woocommerce-gateway-stripe --activate
+
+4. Manual installation:
+   - Download zip file
+   - Extract to plugins directory
+   - Ensure proper file permissions (755 for directories, 644 for files)
+
+Configuration Requirements:
+- Stripe API keys (test and live)
+- Webhook endpoint configuration
+- Currency settings (USD)
+- Payment method options (cards, Apple Pay, Google Pay)
+
+Environment Variables Needed:
+- STRIPE_PUBLISHABLE_KEY
+- STRIPE_SECRET_KEY
+- STRIPE_WEBHOOK_SECRET
+
+Note: Plugin will be automatically downloaded and activated during WordPress installation process.

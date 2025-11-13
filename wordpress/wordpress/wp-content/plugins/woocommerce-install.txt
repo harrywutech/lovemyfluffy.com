@@ -1,0 +1,20 @@
+# WooCommerce Plugin Installation Instructions
+
+To install WooCommerce plugin:
+
+1. Download from WordPress.org:
+   - URL: https://downloads.wordpress.org/plugin/woocommerce.latest-stable.zip
+   - Version: Latest stable (8.x+)
+
+2. Extract to: wordpress/wp-content/plugins/woocommerce/
+
+3. Alternative installation via WP-CLI (when container is running):
+   docker-compose exec wordpress wp plugin install woocommerce --activate
+
+4. Manual installation:
+   - Download zip file
+   - Extract to plugins directory
+   - Ensure proper file permissions (755 for directories, 644 for files)
+
+Note: Plugin will be automatically downloaded and activated during Docker container startup
+or WordPress installation process.

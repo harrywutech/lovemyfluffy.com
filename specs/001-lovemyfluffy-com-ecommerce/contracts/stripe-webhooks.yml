@@ -1,0 +1,299 @@
+openapi: 3.0.0
+info:
+  title: Stripe Webhook Events for LoveMyFluffy
+  description: Webhook endpoint specifications for Stripe payment processing
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8660/wp-json/stripe/v1
+    description: Local development webhook endpoint
+
+components:
+  schemas:
+    StripeEvent:
+      type: object
+      required:
+        - id
+        - object
+        - type
+        - data
+        - created
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the event
+        object:
+          type: string
+          enum: [event]
+        type:
+          type: string
+          description: Event type
+        data:
+          type: object
+          properties:
+            object:
+              type: object
+              description: The Stripe object associated with the event
+        created:
+          type: integer
+          description: Time at which the event was created (Unix timestamp)
+        livemode:
+          type: boolean
+          description: Whether the event occurred in live mode
+        pending_webhooks:
+          type: integer
+          description: Number of webhooks yet to be delivered
+
+    PaymentIntentSucceeded:
+      allOf:
+        - $ref: '#/components/schemas/StripeEvent'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum: [payment_intent.succeeded]
+            data:
+              type: object
+              properties:
+                object:
+                  $ref: '#/components/schemas/PaymentIntent'
+
+    PaymentIntentFailed:
+      allOf:
+        - $ref: '#/components/schemas/StripeEvent'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum: [payment_intent.payment_failed]
+            data:
+              type: object
+              properties:
+                object:
+                  $ref: '#/components/schemas/PaymentIntent'
+
+    ChargeDispute:
+      allOf:
+        - $ref: '#/components/schemas/StripeEvent'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum: [charge.dispute.created]
+            data:
+              type: object
+              properties:
+                object:
+                  $ref: '#/components/schemas/Dispute'
+
+    PaymentIntent:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the PaymentIntent
+        object:
+          type: string
+          enum: [payment_intent]
+        amount:
+          type: integer
+          description: Amount in cents
+        currency:
+          type: string
+          description: Three-letter ISO currency code
+        status:
+          type: string
+          enum: [requires_payment_method, requires_confirmation, requires_action, processing, requires_capture, canceled, succeeded]
+        metadata:
+          type: object
+          properties:
+            order_id:
+              type: string
+              description: WooCommerce order ID
+            customer_id:
+              type: string
+              description: WooCommerce customer ID
+        charges:
+          type: object
+          properties:
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/Charge'
+
+    Charge:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+          enum: [charge]
+        amount:
+          type: integer
+        currency:
+          type: string
+        status:
+          type: string
+          enum: [pending, succeeded, failed]
+        payment_method:
+          type: string
+        billing_details:
+          $ref: '#/components/schemas/BillingDetails'
+        outcome:
+          $ref: '#/components/schemas/ChargeOutcome'
+
+    BillingDetails:
+      type: object
+      properties:
+        address:
+          type: object
+          properties:
+            city:
+              type: string
+            country:
+              type: string
+            line1:
+              type: string
+            line2:
+              type: string
+            postal_code:
+              type: string
+            state:
+              type: string
+        email:
+          type: string
+        name:
+          type: string
+        phone:
+          type: string
+
+    ChargeOutcome:
+      type: object
+      properties:
+        network_status:
+          type: string
+          enum: [approved_by_network, declined_by_network, not_sent_to_network, reversed_after_approval]
+        reason:
+          type: string
+        risk_level:
+          type: string
+          enum: [normal, elevated, highest]
+        risk_score:
+          type: integer
+        seller_message:
+          type: string
+        type:
+          type: string
+          enum: [authorized, manual_review, issuer_declined, blocked, invalid]
+
+    Dispute:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+          enum: [dispute]
+        amount:
+          type: integer
+        currency:
+          type: string
+        reason:
+          type: string
+          enum: [duplicate, fraudulent, subscription_canceled, product_unacceptable, product_not_received, unrecognized, credit_not_processed, general, incorrect_account_details, insufficient_funds, bank_cannot_process, debit_not_authorized, customer_initiated]
+        status:
+          type: string
+          enum: [warning_needs_response, warning_under_review, warning_closed, needs_response, under_review, charge_refunded, won, lost]
+        evidence:
+          type: object
+        charge:
+          type: string
+          description: ID of the charge that was disputed
+
+    WebhookResponse:
+      type: object
+      properties:
+        received:
+          type: boolean
+          description: Acknowledgment of webhook receipt
+        order_id:
+          type: string
+          description: Associated WooCommerce order ID
+        status:
+          type: string
+          description: Processing status
+
+    WebhookError:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        event_id:
+          type: string
+
+paths:
+  /webhooks:
+    post:
+      summary: Stripe webhook endpoint
+      description: Handles incoming Stripe webhook events for payment processing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/PaymentIntentSucceeded'
+                - $ref: '#/components/schemas/PaymentIntentFailed'
+                - $ref: '#/components/schemas/ChargeDispute'
+      responses:
+        '200':
+          description: Webhook processed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookResponse'
+        '400':
+          description: Invalid webhook payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookError'
+        '401':
+          description: Invalid webhook signature
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookError'
+        '500':
+          description: Internal server error processing webhook
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookError'
+
+# Webhook Event Types We Handle
+#
+# Payment Events:
+# - payment_intent.succeeded: Payment completed successfully
+# - payment_intent.payment_failed: Payment failed or declined
+# - payment_intent.requires_action: Additional authentication needed (3D Secure)
+#
+# Charge Events:
+# - charge.succeeded: Successful charge completion
+# - charge.failed: Charge failure
+# - charge.dispute.created: Customer initiated chargeback/dispute
+#
+# Subscription Events (future):
+# - invoice.payment_succeeded: Recurring payment succeeded
+# - invoice.payment_failed: Recurring payment failed
+# - customer.subscription.deleted: Subscription cancelled
+#
+# Implementation Notes:
+# - All webhooks must verify Stripe signature
+# - Idempotent processing (handle duplicate events)
+# - Update WooCommerce order status based on event type
+# - Log all webhook events for audit trail
+# - Send customer notifications for relevant events

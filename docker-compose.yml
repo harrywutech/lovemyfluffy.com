@@ -1,0 +1,76 @@
+# Docker Compose file for LoveMyFluffy WordPress E-commerce
+
+services:
+  nginx:
+    build: ./nginx
+    container_name: lovemyfluffy_nginx
+    ports:
+      - "${NGINX_PORT:-8660}:80"
+    volumes:
+      - ./wordpress:/var/www/html
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - wordpress
+    networks:
+      - lovemyfluffy-network
+    restart: unless-stopped
+
+  wordpress:
+    build: ./wordpress
+    container_name: lovemyfluffy_wordpress
+    volumes:
+      - ./wordpress:/var/www/html
+      - wordpress_data:/var/www/html/wp-content/uploads
+    environment:
+      WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
+      WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
+      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DEBUG: ${WORDPRESS_DEBUG:-false}
+      WORDPRESS_DEBUG_LOG: ${WORDPRESS_DEBUG_LOG:-false}
+      WORDPRESS_DEBUG_DISPLAY: ${WORDPRESS_DEBUG_DISPLAY:-false}
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_HOME', '${WORDPRESS_HOME}');
+        define('WP_SITEURL', '${WORDPRESS_SITEURL}');
+        define('AUTH_KEY', '${WORDPRESS_AUTH_KEY}');
+        define('SECURE_AUTH_KEY', '${WORDPRESS_SECURE_AUTH_KEY}');
+        define('LOGGED_IN_KEY', '${WORDPRESS_LOGGED_IN_KEY}');
+        define('NONCE_KEY', '${WORDPRESS_NONCE_KEY}');
+        define('AUTH_SALT', '${WORDPRESS_AUTH_SALT}');
+        define('SECURE_AUTH_SALT', '${WORDPRESS_SECURE_AUTH_SALT}');
+        define('LOGGED_IN_SALT', '${WORDPRESS_LOGGED_IN_SALT}');
+        define('NONCE_SALT', '${WORDPRESS_NONCE_SALT}');
+    depends_on:
+      - mysql
+    networks:
+      - lovemyfluffy-network
+    restart: unless-stopped
+
+  mysql:
+    image: mysql:8.0
+    container_name: lovemyfluffy_mysql
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/init:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    # Internal port only - no external access needed
+    # ports:
+    #   - "${MYSQL_PORT:-3306}:3306"
+    networks:
+      - lovemyfluffy-network
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+
+volumes:
+  wordpress_data:
+    driver: local
+  mysql_data:
+    driver: local
+
+networks:
+  lovemyfluffy-network:
+    driver: bridge
