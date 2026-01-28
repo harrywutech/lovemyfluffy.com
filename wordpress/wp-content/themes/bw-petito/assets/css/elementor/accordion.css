@@ -1,0 +1,102 @@
+
+/*Begin Elementor Accordion */
+.elbzotech-accordion-css .ui-icon{
+    display: none;
+}
+.elbzotech-accordion-css .box-icon-accor{
+    position: relative;
+}
+.elbzotech-accordion-css .box-icon-accor .icon-accor{
+
+}
+.elbzotech-accordion-css .box-icon-accor .icon-accor-active{
+    position: absolute;
+    opacity: 0;
+    left: 0;
+    top: 0;
+}
+.elbzotech-accordion-css .ui-state-active .box-icon-accor .icon-accor-active{
+    opacity: 1;
+}
+.elbzotech-accordion-css .ui-state-active .box-icon-accor .icon-accor{
+    opacity: 0;
+}
+.elbzotech-accordion-css.ui-accordion .ui-accordion-header{
+    margin:  0px;
+    border-radius: 0px;
+     padding: 10px 20px;
+}
+.elbzotech-accordion-css.ui-accordion .ui-accordion-header{
+    /*margin-top: -1px;*/
+}
+.elbzotech-accordion-css.ui-accordion .ui-accordion-header:last-child{
+    /*margin-top: 0px;*/
+}
+.elbzotech-accordion-css.ui-accordion .ui-accordion-content {
+    padding: 30px 20px;
+
+    border-radius: 0px;
+}
+.elbzotech-accordion-css .ui-accordion-content p:last-child{
+    margin-bottom: 0px;
+}
+.elbzotech-accordion-css.ui-widget{
+    font-family:inherit;
+}
+/*----------------------*/
+.elbzotech-accordion-.ui-accordion .ui-accordion-content{
+    margin-left: 70px;
+    border-color: var(--bzo-main-color);
+    border-top: 1px solid var(--bzo-main-color);
+    padding: 30px 30px;
+    color: #666;
+}
+.elbzotech-accordion-.ui-accordion .ui-accordion-header{
+    background: #fff;
+    border: none;
+    color: #000;
+    display: flex;
+    align-items: center;
+    padding: 0px;
+    margin-top: 20px;
+}
+.elbzotech-accordion-.ui-accordion .ui-accordion-header:first-child{
+     margin-top: 0px;
+}
+.elbzotech-accordion-.ui-accordion .ui-accordion-header .text{
+    font-size: 24px;
+    order: 1;
+}
+.elbzotech-accordion- .box-icon-accor {
+    margin-right: 20px;
+    order: 0;
+    width: 50px;
+    height: 50px;
+    background: #ccc;
+    line-height: 50px;
+    display: inline-block;
+    text-align: center;
+    background: var(--bzo-main-color);
+    
+    color: #fff;
+    font-size: 24px;
+}
+.elbzotech-accordion- .ui-state-active .box-icon-accor {
+    color: #000;
+    background: var(--bzo-main-color);
+    
+}
+.elbzotech-accordion- .box-icon-accor .icon-accor-active {
+    position: absolute;
+    opacity: 0;
+    left: 0;
+    top: 0;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+}
+/*-------------------------------*/
+.elbzotech-accordion-style2 .box-icon-accor {
+    float: right;
+}
+/*End Elementor Accordion */

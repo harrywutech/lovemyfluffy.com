@@ -1,0 +1,72 @@
+.form-group input {
+  border-radius: 3px;
+}
+.form-group textarea {
+  border-radius: 3px;
+}
+.form-group label {
+  color: white;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+.form-group .wrap-1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 20px;
+}
+.form-group .wrap-1 .text-1, .form-group .wrap-1 .text-2 {
+  padding: 0 10px;
+}
+.form-group .wrap-1 .text-1 p, .form-group .wrap-1 .text-2 p {
+  display: none;
+}
+.form-group .wrap-2 {
+  margin-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.form-group .wrap-2 .text-3, .form-group .wrap-2 .text-4 {
+  padding: 0 10px;
+}
+.form-group .wrap-2 .text-3 p, .form-group .wrap-2 .text-4 p {
+  display: none;
+}
+.form-group .text-5 {
+  padding: 0 10px;
+}
+.form-group .form-submit {
+  padding: 0 10px;
+  margin-top: -5px;
+}
+
+.form-submit input {
+  border-radius: 22px;
+  height: 50px;
+  background-color: var(--bzo-main-color);
+  color: white;
+  width: 180px;
+  padding: 0 !important;
+  border: 0;
+  font-size: 100%;
+  font-family: var(--bzo-body_typo-font-family);
+}
+
+.for-partners-form .text-5 {
+  margin-top: 20px;
+}
+.for-partners-form textarea {
+  height: 175px;
+}
+.for-partners-form .form-group .wrap-1 {
+  display: unset;
+}
+.for-partners-form .form-group .wrap-1 .text-2 {
+  margin-top: 20px;
+}
+.for-partners-form .form-submit input {
+  width: 180px;
+  padding: 0 !important;
+  text-align: center;
+}

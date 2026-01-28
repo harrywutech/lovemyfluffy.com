@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    color: var(--bzo-body_typo-color);
+    font-size: var(--bzo-body_typo-font-size);
+    font-weight: var(--bzo-body_typo-font-weight);
+    font-family:  var(--bzo-body_typo-font-family);
+    line-height: var(--bzo-body_typo-line-height);
+    background: var(--bzo-body-background);
+}
+p{
+    margin-bottom: 30px;
+}
+a{
+    color: #000;
+    text-decoration: unset;
+    transition: all 100ms linear;
+    -webkit-transition: all 100ms linear;
+}
+:focus {
+    outline: none;
+}
+a.active,
+a:focus,
+a:hover{
+    color: var(--bzo-main-color);
+    text-decoration: none;
+}
+a:hover:before {
+    color: var(--bzo-main-color);
+}
+a:focus {
+    outline: none;
+    outline: none;
+    outline-offset: unset;
+}
+input:focus {     
+       outline: 0;     
+       outline-style: none;     
+       outline-width: 0; 
+}
+
+select{
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #e5e5e5;
+    padding: 0 20px;
+    font-size: 18px;
+    border-radius: 0;
+}
+input{
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #e5e5e5;
+    padding: 0 20px;
+    font-size: 18px;
+    border-radius: 0;
+    width: 100%;
+    max-width: 100%;
+}
+input[type="checkbox"]{
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    vertical-align: middle;
+    margin: 0px;
+    margin-top: -3px;
+}
+input[type="checkbox"]:before{
+    content: "";
+    width: 16px;
+    height: 16px;
+    background: #e5e5e5;
+    display: inline-block;
+    vertical-align: top;
+    margin: -1px 0 0 0;
+    z-index: 2;
+    cursor: pointer;
+    font-family: 'Line Awesome Free';
+    font-weight: 900;
+    text-align: center;
+}
+input[type="checkbox"]:checked:before{
+    content: "\f00c";
+}
+input[type="text"]{
+   /* min-width: 50%;*/
+    max-width: 100%;
+}
+textarea{
+    min-width: 100%;
+    max-width: 100%;
+    padding: 10px 20px;
+    border: 1px solid #e5e5e5;
+    border-radius: 0;
+    font-size: 18px;
+}
+img{
+    max-width: 100%;
+    height: auto;
+}
+h1{
+    font-size: 36px;
+}
+h2{
+    font-size: 30px;
+}
+h3{
+    font-size: 24px;
+}
+h4{
+    font-size: 18px;
+}
+h5{
+    font-size: 14px;
+}
+h6{
+    font-size: 12px;
+}
+h1,
+h2,
+h3{
+    font-weight: bold;
+    line-height: 1.1;
+}
+h2 {
+    font-family: var(--bzo-title_typo-font-family);
+    font-style: normal;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 42px;
+}
+h5.elbzotech-heading-style2 {
+    font-family: var(--bzo-body_typo-font-family);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 31px;
+}

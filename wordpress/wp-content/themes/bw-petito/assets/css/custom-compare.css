@@ -1,0 +1,162 @@
+/*Import*/
+/*************************************
+Wishlist Style
+***********************************************/
+/*:root {
+    --bzo-main-color: #00B8D9;
+    --bzo-main-color2: #A0A3BD;
+    --bzo-main-color3: #FFBE00; 
+    --bzo-main-color: #ff370f;
+    --bzo-main-color2: #222222;
+    --bzo-main-color3: #FFBE00;
+    --bzo-body-background: ;
+    --bzo-container-width: 1600px;
+    --bzo-preload-background: #ffffff;
+    --bzo-body_typo-font-family: "Open Sans";
+    --bzo-body_typo-google: 1;
+    --bzo-body_typo-font-size: 18px;
+    --bzo-body_typo-line-height: 1.9em;
+    --bzo-body_typo-color: #777;
+    --bzo-title_typo-font-family: "Oswald";
+}*/
+div table.compare-list .add-to-cart td a:not(.unstyled_button) {
+        font-family: var(--bzo-body_typo-font-family);
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 21px;
+        height: 48px;
+        color: white;
+        background-color: var(--bzo-main-color);
+        /*border-radius: 22px 22px 22px 22px;*/
+        padding: 13px 34px 12px 35px;
+        margin-left: 15px;
+        z-index: 0;
+        padding: 0px 47px!important;
+        line-height: 48px;
+        text-transform: capitalize;
+        transition: all .1s linear;
+}
+table.dataTable.compare-list tr.title td {
+    font-size: 16px;
+    font-weight: 500;
+}
+div table.compare-list .add-to-cart td a:not(.unstyled_button):hover {
+    background-color: var(--bzo-main-color2);
+}
+table.compare-list .woocs_price_code span bdi,
+table.compare-list .woocs_price_code span
+ {
+    color: var(--bzo-main-color);
+    font-size: 18px;
+    font-family: var(--bzo-title_typo-font-family);
+    font-weight: 600;
+}
+table.compare-list .woocs_price_code del span bdi ,
+table.compare-list .woocs_price_code del span bdi span,
+table.compare-list .woocs_price_code del span {
+    color: var(--bzo-body_typo-color);
+    font-size: 100%;
+    font-weight: 400;
+}
+table.compare-list .woocs_price_code del {
+    text-decoration: none;
+}
+table.compare-list .woocs_price_code del > span {
+    text-decoration: line-through;
+}
+table.compare-list .woocs_price_code {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+table.compare-list .woocs_price_code del {
+    order: 1;
+}
+.woocs_price_code span bdi {
+    color: var(--bzo-main-color);
+    font-family: var(--bzo-body_typo-font-family);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 144.44%;
+    line-height: 26px;
+}
+.woocs_price_code ins {
+    text-decoration: unset!important;
+}
+.woocs_price_code {
+    color: var(--bzo-main-color);
+    font-family: var(--bzo-body_typo-font-family);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 111%;
+    line-height: 20px;
+}
+.woocs_price_code del {
+    color: #A0A3BD;
+    font-family: var(--bzo-body_typo-font-family);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    display: inline-block;
+    text-decoration: line-through;
+}
+.yith-woocompare-popup h1 {
+    background: none;
+    color: var(--bzo-main-color2);
+    font-weight: 600;
+    padding: 10px;
+    border-bottom: 2px solid #fff;
+    display: block;
+    text-transform: uppercase;
+    font-size: 1.6em;
+    margin: 40px 0 0;
+    text-align: center;
+    font-family: var(--bzo-title_typo-font-family);
+    letter-spacing: 0;
+}
+.compare-list td.odd {
+    font-family: var(--bzo-body_typo-font-family);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #000;
+}
+.compare-list td.odd p {
+    color: #4E4B66;
+    font-family: var(--bzo-body_typo-font-family);
+}
+.compare-list td.even p {
+    color: #4E4B66;
+    font-family: var(--bzo-body_typo-font-family);
+}
+.compare-list td.even {
+    font-family: var(--bzo-body_typo-font-family);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #000;
+}
+
+
+.woocs_price_code del span bdi {
+    color: #727272;
+    font-family: var(--bzo-body_typo-font-family);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    display: inline-block;
+    text-decoration: line-through;
+}
+table.compare-list .price td {
+    text-decoration: unset!important;
+}
+table.compare-list td {
+    text-decoration: unset!important;
+}
+

@@ -1,0 +1,115 @@
+table .title14 {
+  font-size: 24px;
+  font-weight: 600 !important;
+  color: #14142B;
+  font-family: var(--bzo-title_typo-font-family);
+}
+
+.product-name a {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 100%;
+  line-height: 21px;
+  font-family: var(--bzo-body_typo-font-family);
+}
+
+.woocommerce-cart table.cart img {
+  width: 70px;
+}
+
+.woocommerce-cart-form thead .product-remove i {
+  font-size: 0;
+}
+
+.product-price bdi, .product-subtotal bdi {
+  color: var(--bzo-main-color);
+  font-family: var(--bzo-body_typo-font-family);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 111%;
+  line-height: 20px;
+}
+
+.woocommerce .coupon button {
+  border-radius: 22px;
+  height: 50px;
+  width: 157px;
+  background-color: var(--bzo-main-color);
+  color: white;
+  border: 0;
+  font-size: 100%;
+  font-family: var(--bzo-body_typo-font-family);
+  display: inline-block;
+  font-weight: 700;
+  text-transform: capitalize;
+  line-height: 50px;
+  padding: 0;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.woocommerce .coupon button:hover {
+  background-color: var(--bzo-main-color3);
+  color: white;
+}
+.woocommerce .coupon > .input-text {
+  border-radius: 22px;
+  height: 50px;
+  width: 157px;
+  font-size: 100%;
+  font-family: var(--bzo-body_typo-font-family);
+  display: inline-block;
+  font-weight: 500;
+  text-transform: capitalize;
+  line-height: 50px;
+  padding: 0;
+}
+
+.woocommerce .actions > button {
+  border-radius: 22px;
+  height: 50px;
+  width: 157px;
+  color: white;
+  border: 0;
+  font-size: 100%;
+  font-family: var(--bzo-body_typo-font-family);
+  display: inline-block;
+  font-weight: 700;
+  text-transform: capitalize;
+  line-height: 50px;
+  padding: 0 !important;
+  background-color: #777;
+  color: white !important;
+}
+
+#add_payment_method .wc-proceed-to-checkout a.checkout-button, .woocommerce-cart .wc-proceed-to-checkout a.checkout-button, .woocommerce-checkout .wc-proceed-to-checkout a.checkout-button {
+  background-color: var(--bzo-main-color);
+  border-radius: 22px;
+}
+#add_payment_method .wc-proceed-to-checkout a.checkout-button:hover, .woocommerce-cart .wc-proceed-to-checkout a.checkout-button:hover, .woocommerce-checkout .wc-proceed-to-checkout a.checkout-button:hover {
+  background-color: var(--bzo-main-color3);
+}
+
+.cart-subtotal th {
+  color: #14142B;
+  padding: 20px 0px !important;
+}
+.cart-subtotal span {
+  font-style: normal;
+  font-weight: 600;
+  line-height: 21px;
+  font-family: var(--bzo-body_typo-font-family);
+  color: var(--bzo-main-color);
+}
+
+.order-total th {
+  color: #14142B;
+  padding: 20px 0px !important;
+  vertical-align: middle !important;
+}
+.order-total span {
+  font-style: normal;
+  font-weight: 600;
+  line-height: 21px;
+  font-family: var(--bzo-body_typo-font-family);
+  color: var(--bzo-main-color);
+}

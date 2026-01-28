@@ -1,0 +1,58 @@
+1.6.5 20/10/2025
+Updated: 
+Fix:
+    - On Ajax security. Fix LFI vulnerability
+
+1.6.4 04/10/2025
+Updated: 
+    - plugin revslider 6.7.38
+Fix:
+    - On Ajax security. Fix LFI vulnerability
+
+1.6.3 16/07/2025
+Updated: 
+Fix:
+    Ajax security
+1.6.2 25/12/2024
+Updated: 
+	- Plugin Bzotech Elementor 1.2
+	- plugin revslider 6.7.25
+Fix:
+    - Update the Swiper slider to version 8.4.5 for compatibility with Elementor version 3.26.3. 
+
+1.6.1: 20/11/2024
+Fix:
+    - Disable woocommerce message contains outdated copies of some WooCommerce template files
+1.6: 19/09/2024
+Fix:
+	- Fix the error contains outdated copies of some WooCommerce template files
+	- Fix Import Demo Content: In previous versions, after 'Import Demo Content', you had to reset the Layout in 'Site Settings'. In this version, we have integrated these settings while you run 'Import Demo Content'.
+	- Fix Theme check: In this version, we have fixed several issues when testing the theme with the 'Envato Theme Check' plugin. We have also removed some unnecessary CSS files and folders that were not loaded into the theme.
+	- In the previous version, the Elementor Info Box / Style 7 (Service) displayed on Home 2 did not show the 'Sub Title' input field. In this version, we have fixed it.
+Update:
+	bw-petito.pot: We have updated the data for the theme's language translation. There might be new translations added, and you can use the Loco Translate plugin to "Sync" them.
+
+1.5: 05/09/2024
+Fix:
+	- Fix the error contains outdated copies of some WooCommerce template files
+Update:
+	- Bzotech core ver:1.4
+	- Slider Revolution plugin ver 6.7.18
+1.3 19/6
+Updated:
+- Add layout 5, 6
+- Add mobile footer menu
+
+1.1 26/05/2023
+
+Updated:
+	- Home 4
+1.1 04/03/2023
+
+Fixed
+	-
+Updated:
+	- Home 3
+	- Import by demo
+	- plugin Bzotech Core 
+	- plugin Bzotech Elementor 

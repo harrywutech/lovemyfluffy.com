@@ -1,0 +1,75 @@
+.footer-bottom2 .item-link .title {
+  margin-left: 4px;
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: var(--bzo-body_typo-font-family);
+}
+.footer-bottom2 .element-list-link .icon-image-link {
+  cursor: pointer;
+}
+.footer-bottom2 .element-list-link .icon-image-link img {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.footer-bottom2 .element-list-link .icon-image-link:hover img {
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+}
+
+.footer-top2 .element-list-link a span {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  display: inline-block;
+}
+.footer-top2 .element-list-link a span:hover {
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  color: var(--bzo-main-color) !important;
+}
+.footer-top2 .mc4wp-form {
+  max-width: 700px;
+  margin: auto;
+  position: relative;
+}
+.footer-top2 .mc4wp-form input {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid white;
+  padding: 0 5px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: var(--bzo-body_typo-font-family);
+  width: 80%;
+  color: white;
+}
+.footer-top2 .mc4wp-form input::-webkit-input-placeholder {
+  color: white;
+}
+.footer-top2 .mc4wp-form input::-moz-placeholder {
+  color: white;
+}
+.footer-top2 .mc4wp-form input:-ms-input-placeholder {
+  color: white;
+}
+.footer-top2 .mc4wp-form input::-ms-input-placeholder {
+  color: white;
+}
+.footer-top2 .mc4wp-form input::placeholder {
+  color: white;
+}
+.footer-top2 .mc4wp-form button {
+  cursor: pointer;
+  padding: 16px 30px;
+  border-radius: 66px;
+  border: 0;
+  background-color: white;
+  color: var(--bzo-main-color2);
+  font-size: 20px;
+  font-weight: 700;
+  font-family: var(--bzo-body_typo-font-family);
+  -webkit-transform: translateY(-18px);
+          transform: translateY(-18px);
+  right: 0;
+  position: absolute;
+}

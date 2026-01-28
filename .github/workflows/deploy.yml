@@ -1,0 +1,104 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      skip_backup:
+        description: 'Skip database backup'
+        required: false
+        type: boolean
+        default: false
+
+env:
+  DEPLOY_PATH: ~/lovemyfluffy.com
+
+jobs:
+  deploy:
+    name: Deploy to Production Mac
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USERNAME }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          port: ${{ secrets.DEPLOY_PORT }}
+          script_stop: true
+          script: |
+            set -e
+
+            echo "================================"
+            echo "Starting deployment to production"
+            echo "================================"
+
+            # Navigate to project directory
+            cd ${{ env.DEPLOY_PATH }}
+
+            # Pull latest changes
+            echo "Pulling latest code from GitHub..."
+            git fetch origin
+            git reset --hard origin/main
+
+            # Backup database (unless skipped)
+            if [ "${{ github.event.inputs.skip_backup }}" != "true" ]; then
+              echo "Creating database backup..."
+              BACKUP_FILE="backups/db-backup-$(date +%Y%m%d-%H%M%S).sql"
+              mkdir -p backups
+              docker compose exec -T mysql mysqldump \
+                -u"${MYSQL_USER}" \
+                -p"${MYSQL_PASSWORD}" \
+                --single-transaction \
+                --routines \
+                --triggers \
+                "${MYSQL_DATABASE}" > "${BACKUP_FILE}" 2>/dev/null || echo "Warning: Backup failed"
+              echo "Backup saved to: ${BACKUP_FILE}"
+            else
+              echo "Skipping database backup (manual override)"
+            fi
+
+            # Pull latest images and rebuild
+            echo "Rebuilding Docker containers..."
+            docker compose pull
+            docker compose build --no-cache
+
+            # Graceful restart with zero-downtime
+            echo "Restarting services..."
+            docker compose up -d --force-recreate --remove-orphans
+
+            # Wait for services to be healthy
+            echo "Waiting for services to start..."
+            sleep 10
+
+            # Health check
+            echo "Running health checks..."
+            if bash scripts/health-check.sh; then
+              echo "✓ Health checks passed"
+            else
+              echo "⚠ Health checks failed - manual intervention required"
+              exit 1
+            fi
+
+            # Cleanup old images
+            echo "Cleaning up old Docker images..."
+            docker image prune -f
+
+            echo "================================"
+            echo "Deployment completed successfully!"
+            echo "================================"
+
+      - name: Notify deployment status
+        if: always()
+        run: |
+          if [ "${{ job.status }}" == "success" ]; then
+            echo "✓ Deployment successful"
+          else
+            echo "✗ Deployment failed"
+          fi

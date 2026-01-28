@@ -1,4 +1,15 @@
 # Docker Compose file for LoveMyFluffy WordPress E-commerce
+#
+# ENVIRONMENT: This configuration works for both development and production
+# - Development: Uses .env with localhost URLs and debug enabled
+# - Production: Uses .env with production URLs and debug disabled
+#
+# Start services: docker compose up -d
+# Stop services: docker compose down
+# View logs: docker compose logs -f
+#
+# See DEVELOPMENT.md for local development guide
+# See DEPLOYMENT.md for production deployment guide
 
 services:
   nginx:

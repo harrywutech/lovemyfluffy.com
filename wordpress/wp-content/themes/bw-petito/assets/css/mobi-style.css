@@ -1,0 +1,89 @@
+
+/*******************************************************************************************************
+Begin Responsive
+********************************************************************************************************/
+@media (max-width: 1170px) {
+
+}/*End max-width: 1170px*/
+
+@media (max-width: 1170px) and (min-width: 1025px) {
+   
+}/*End max-width: 1170px and min-width: 1025px*/
+@media (max-width: 1800px) {
+
+}/*End max-width: 1800px*/
+@media (max-width: 1440px) {
+
+}/*End max-width: 1440px*/
+@media (max-width: 1366px) {
+    
+}/*End max-width: 1366px*/
+@media (max-width: 1365px) {
+
+}/*End max-width: 1365px*/
+@media (max-width: 1366px)and (min-width: 1025px) {
+
+}/*End max-width: 1366px*/
+@media (max-width: 1280px) {
+ 
+}
+@media (max-width: 1200px) {
+    .elbzotech-list-product-search > p, .elbzotech-list-product-search > i {
+        min-height: 42px;
+    }
+}/*End max-width: 1200px*/
+@media (max-width: 1199px) {
+
+}/*End max-width: 1199px*/
+
+@media (max-width: 1170px) {
+
+}/*End max-width: 1170px*/
+
+@media (width: 1024px)  {
+
+}
+@media (max-width: 1024px)  {
+    
+}/*End max-width: 1024px*/
+@media (max-width: 992px) {
+    .elbzotech-list-product-search > p, .elbzotech-list-product-search > i {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+}
+@media (max-width: 991px)  {
+  
+}/*End max-width: 991px*/
+@media (min-width: 767px) and (max-width: 991px)  {
+    
+}/*End min-width: 767px and max-width: 991px*/
+@media (width: 768px) {
+    
+}/*End width: 768px*/
+@media (max-width: 768px) {
+
+}/*End max-width: 768px*/
+@media (max-width: 800px) {
+
+}/*End max-width: 768px*/
+
+@media (max-width: 767px) {
+
+}/*End max-width: 767px*/
+@media (max-width: 600px) {
+
+}/*End max-width: 600px*/
+@media (max-width: 480px) {
+    .elbzotech-list-product-search {
+        left: -20px;
+    }
+}/*End max-width: 480px*/
+@media (max-width: 400px) {
+    .elbzotech-list-product-search {
+        left: 0;
+    }
+} 
+@media (max-width: 320px) {
+
+}/*End max-width: 320px

@@ -1,0 +1,190 @@
+/*
+- Begin Meta post style
+- Begin tags and share single post
+- Begin post info author
+- Begin post control
+*/
+/*Begin Meta post style*/
+.style-meta-detail-post .avata img{
+    width: 50px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+.style-meta-detail-post .avata .name-date{
+    margin-left: 15px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.style-meta-detail-post .avata .name{
+    font-size: 18px;
+    text-transform: capitalize;
+    font-weight: 500;
+    display: block;
+}
+.style-meta-detail-post .avata .date{
+    display: block;
+}
+.style-meta-detail-post >li{
+    margin-right: 60px;
+    font-size: 12px;
+}
+.style-meta-detail-post >li:last-child{
+    margin-right: 0px;
+}
+.style-meta-detail-post .meta-item i{
+    vertical-align: middle;
+    margin-right: 15px;
+    font-size: 30px;
+}
+
+.style-meta-detail-post,
+.style-meta-detail-post a,
+.style-meta-detail-post .avata .date{
+    color: rgb(0 0 0 / 0.7);
+}
+.style-meta-detail-post .avata .name,
+.style-meta-detail-post a:hover{
+    color: #000;
+}
+.style-meta-detail-post.white,
+.style-meta-detail-post.white a,
+.style-meta-detail-post.white .avata .date{
+    color: rgb(255 255 255 / 0.7);
+}
+.style-meta-detail-post.white .avata .name,
+.style-meta-detail-post.white a:hover{
+    color: #fff;
+}
+/*End Meta post style*/
+
+/*Begin tags and share single post*/
+.tags-and-share-single-post{
+    margin-top: 70px;
+}
+.tags-and-share-single-post .flex-wrapper>div{
+    width: 100%;
+}
+.tags-and-share-single-post .tags-post h3{
+    display: inline-block;
+        margin-right: 65px;
+}
+.tags-and-share-single-post .tags-post a{
+    margin-right: 40px;
+    color: #686868;
+    text-transform: capitalize;
+    display: inline-block;
+}
+.tags-and-share-single-post .tags-post a:hover{
+    text-decoration: underline;
+    color: #000;
+}
+.tags-and-share-single-post .tags-post a:last-child{
+    margin-right: 0px;
+}
+/*End tags and share single post*/
+/*Begin post info author*/
+.post-info-author-style1{
+    background: #f7f7f7;
+    position: relative;
+    margin-top: 30px;
+    padding: 30px 40px;
+}
+
+.post-info-author-style1 .name-author{
+    color: #000;
+    font-size: 20px;
+    text-transform: capitalize;
+    display: inline-block;
+    margin-bottom: 7px;
+    font-weight: 700;
+}
+.post-info-author-style1 .desc{
+    line-height: 28px;
+    margin-bottom: 5px;
+    color: #666;
+}
+.link-author-post {
+    color: var(--bzo-main-color);
+}
+.post-info-author-style1 .author-thumb{
+    width: 234px;
+    min-width: 70px;
+    margin-right: 30px;
+
+}
+.single-list-social {
+    display: flex;
+}
+.share-icon .title18 {
+    font-size: 100%;
+    font-weight: 400;
+    color: #222;
+}
+.content-single-blog .align-content-center {
+    align-content: flex-start;
+    align-items: flex-start;
+    border-radius: 16px;
+}
+.post-info-author-style1 .author-thumb img{
+    border-radius: 50%;
+}
+/*End post info author*/
+/*Begin post control*/
+.post-control {
+    margin-top: 30px;
+}
+.post-control .text-title{
+    color: #707070;
+    line-height: 30px;
+    display:none;
+}
+.post-control a:hover .text-title{
+    color: var(--bzo-main-color);
+}
+.post-control a>.title{
+    display: block;
+    font-size: 20px;
+    transition: all .3s linear;
+}
+.post-control a>.title:hover {
+    color: var(--bzo-main-color);
+}
+.post-control a .la-angle-left{
+    margin-right: 10px;
+}
+.post-control a .la-angle-right{
+    margin-left: 10px;
+}
+.post-control .flex-wrapper>div{
+    /*width: 100%;*/
+    /*border-right: 1px solid #e5e5e5;*/
+}
+.post-control .flex-wrapper> .prev-post{
+    padding-right: 15px;
+
+}
+.post-control .flex-wrapper> .next-post{
+    padding-left: 15px;
+
+}
+.post-control .flex-wrapper>div:last-child{
+    border-right: none;
+}
+/*End post control*/
+
+/*Begin Single post style default*/
+
+.single-blog- .title-post-single{
+    margin: 0;
+    margin-bottom: 0px;
+    line-height: 60px;
+    word-break: break-word;
+    font-size: 32px;
+}
+.single-blog- .single-post-media-format{
+    margin-bottom: 15px;
+}
+.single-blog- .meta-post-style1{
+    margin-bottom: 30px;
+}
+/*End Single post style default*/

@@ -1,0 +1,74 @@
+/*Begin 404 page*/
+body.error404 .main-header1{
+    box-shadow: 0px 0px 10px rgb(0 0 0 / 0.1);
+}
+.content-default-404 .number{
+    font-size: 250px;
+    color: #000;
+    margin: 0px;
+    margin-bottom: 70px;
+    line-height: 220px;
+    margin-top: -80px;
+    font-family: var(--bzo-title_typo-font-family);
+}
+.content-default-404 .text{
+    margin-bottom: 10px;
+}
+.content-default-404 .desc{
+    margin-left: auto;
+    margin-right: auto;
+   
+    font-family: var(--bzo-body_typo-font-family);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: #4E4B66;
+    width: 491px;
+    max-width: 100%;
+}
+.content-default-404 .elbzotech-bt-default{
+    margin-top: 39px;
+    font-family: var(--bzo-body_typo-font-family);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 0 29.5px;
+   
+}
+.error404 .main-page-default {
+    margin-top: 170px;
+}
+.error404 h2.number {
+    margin-bottom: 46px;
+}
+.error404 h3.text {
+    font-weight: 700;
+}
+.content-default-404 .elbzotech-bt-default:hover {
+    background-color: var(--bzo-main-color3);
+    color: white;
+    
+}
+.info-not-found{
+    color: #000;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-right: 20px;
+    padding-left: 30px;
+    position: relative;
+    background: var(--bzo-main-color);
+    
+}
+.info-not-found:before{
+    content: "\f05a";
+    font-family: 'Line Awesome Free';
+    font-weight: 900;
+    font-size: 24px;
+    left: 20px;
+    top: 30px;
+    color: #000;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+/*End 404 page*/

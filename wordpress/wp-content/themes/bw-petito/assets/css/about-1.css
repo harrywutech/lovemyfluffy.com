@@ -1,0 +1,43 @@
+.text-about-1 p {
+  line-height: 1.5em;
+}
+
+.text-about-2 {
+  margin-top: -10px;
+}
+.text-about-2 .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.text-about-2 .row h4 {
+  margin-bottom: 5px;
+  color: #14142B;
+  font-size: 22px;
+  font-family: var(--bzo-title_typo-font-family);
+}
+.text-about-2 .row p {
+  color: #4E4B66;
+  line-height: 1.5em;
+}
+.text-about-2 .row .column-left {
+  padding-right: 20px;
+}
+.text-about-2 .row .column-right {
+  padding-left: 10px;
+}
+
+.sig-about strong {
+  color: #14142B;
+}
+
+.elementor-accordion .elementor-accordion-item {
+  margin-bottom: 12px;
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.about-team figure img {
+  width: 190px;
+  height: 190px;
+}
